@@ -12,5 +12,5 @@ Bonus: Support retrieving the information given a partial/fuzzy country code/nam
 
 The application is written using Spring Boot Framework, Spring Data JPA,Lombok, Mockito Framework for test cases
 
-To run the application: mvn spring-boot:run
+To run the application using Maven: mvn spring-boot:run
 The project redirects to : http://localhost:8080
