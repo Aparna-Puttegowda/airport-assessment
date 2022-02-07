@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Reports</title>
+</head>
+
+<body style="background-color: #efefef;">
+
+
+<nav class="navbar navbar-default" style="background-color:  #337ab7;" th:fragment="header">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/"  style="color: #212222;"> Home</a>
+        </div>
+        <ul class="nav navbar-nav">
+         <li><a href="/runway/" style="color: #212222; " >Runways</a></li>   
+          <li><a href="/airportDetails"  style="color: #212222;">Airport Details</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Runways</h3>
+                    <p class="card-text">Click on Runways to retrieve the runway details of each airport based on country Code.</p>
+                    <a href="/runway/" class="btn btn-primary">Go to Runways</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Airport Details</h3>
+                    <p class="card-text">Click on Airport to retrieve the top ten countries with the highest number of Airports.</p>
+                    <a href="/airportDetails" class="btn btn-primary">Go to Airport Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

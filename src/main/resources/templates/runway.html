@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        function fetchtheCountry() {
+            var country = document.getElementById('countryInput').value;
+            console.debug(window.location.href);
+            window.location.assign("/runway/" + country);
+        }
+    </script>
+    <title th:if="${country} != null" th:text="${country.name}"></title>
+    <title th:if="${country} == null" th:text="'Choose Country'"></title>
+</head>
+
+<body>
+
+
+<nav class="navbar navbar-default" style="background-color: #337ab7;" th:fragment="header">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/" style="color: #212222;"> Home </a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/runway" style="color: #212222; ">Runways</a></li>
+            <li><a href="/airportDetails" style="color: #212222; ">Airport Details</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="container">
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="countryInput">Country</label>
+            <input type="text" class="form-control" id="countryInput" placeholder="Code or Name"/>
+        </div>
+        <button type="button" class="btn btn-success" onclick="fetchtheCountry()">Submit</button>
+    </form>
+    <div>
+        <div th:if="${error} != null" class="table-danger">
+            <strong>Error!</strong> <span th:text="${error}">Error</span>
+        </div>
+        <div th:if="${country} != null">
+            <h2 th:text="'Runway Details for' + ${country.name}">Country</h2>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr >
+                            <th rowspan="2">Airport Name</th>
+                            <th colspan="3">Runway Details</th>
+                        </tr>
+                        <tr >
+                            <th>Length</th>
+                            <th>Width</th>
+                            <th>Surface</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <div   th:each="airport : ${airports}">
+                        <tr>
+                            <td  rowspan="2" th:text="${airport.name}">Airport</td>
+                           </tr>
+
+                        <tr th:each="runway : ${airport.runways}">                        
+                            <td th:text="${runway.length_Ft}">Length</td>
+                            <td th:text="${runway.width_Ft}">Width</td>
+                            <td th:text="${runway.surface}">Surface</td>
+                        </tr>
+                    </div>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

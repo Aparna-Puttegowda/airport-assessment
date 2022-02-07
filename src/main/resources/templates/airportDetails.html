@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Report</title>
+</head>
+
+<body>
+
+
+	<nav class="navbar navbar-default" style="background-color: #337ab7;" th:fragment="header">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/" style="color: #212222;">Home</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a href="/runway" style="color: #212222;">Runways</a></li>
+				<li class="active" style="color: #212222;"><a href="/airportDetails">Airport
+						Details</a></li>
+			</ul>
+		</div>
+	</nav>
+
+
+	<div class="container">
+		<div th:each="rs : ${results}">
+			<h2 th:text="${rs.key}"></h2>
+			<div class="table-responsive">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Country</th>
+							<th>Runway Types</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="r : ${rs.value}">
+							<td th:text="${r.country.name}">Coutry</td>
+							<td th:text="${r.runways}">Runway Types</td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
